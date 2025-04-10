@@ -1,0 +1,6 @@
+{
+  "income" : 100000,
+  "maturityPeriod": 30,
+  "loanValue": 900000,
+  "homeValue": 800000
+}

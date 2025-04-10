@@ -2,6 +2,7 @@ package com.assessment.api.mortgage.repository;
 
 import com.assessment.api.mortgage.dta.InterestRateDto;
 import com.assessment.api.mortgage.entity.InterestRateEntity;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -9,7 +10,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
@@ -29,6 +29,7 @@ class InterestRateRepositoryTest {
 
     @ParameterizedTest
     @MethodSource("provideMaturityPeriod")
+    @DisplayName("InterestRateRepository : Verify fetch for a given maturity period")
     void test_fetch_one_interest_rates_scenario(int maturityPeriod, BigDecimal expectedInterestRate) {
         Optional<InterestRateDto> interestRate = interestRateRepository.findByMaturityPeriod(maturityPeriod);
         assertTrue(interestRate.isPresent());
@@ -45,10 +46,10 @@ class InterestRateRepositoryTest {
     }
 
     @Test
+    @DisplayName("InterestRateRepository : Verify whether saved interest rates are fetched")
     void test_fetch_all_interest_rates_scenarios() {
         List<InterestRateEntity> interestRates = interestRateRepository.findAll();
         assertEquals(4, interestRates.size());
     }
-
 
 }

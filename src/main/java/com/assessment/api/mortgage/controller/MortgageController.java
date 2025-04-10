@@ -2,9 +2,6 @@ package com.assessment.api.mortgage.controller;
 
 
 import com.assessment.api.mortgage.configuration.MortgagePropertyConfiguration;
-import com.assessment.api.mortgage.exception.ErrorCode;
-import com.assessment.api.mortgage.exception.MortgageServiceException;
-import com.assessment.api.mortgage.exception.MortgageValidationException;
 import com.assessment.api.mortgage.model.MortgageRequest;
 import com.assessment.api.mortgage.model.MortgageResponse;
 import com.assessment.api.mortgage.service.MortgageService;
@@ -33,7 +30,6 @@ public class MortgageController {
      */
     @PostMapping("/mortgage-check")
     ResponseEntity<MortgageResponse> getMortgageDetails(@Validated @RequestBody MortgageRequest apiRequest) {
-        performValidation(apiRequest);
         BigDecimal monthlyCosts = mortgageService.getMonthlyCosts(apiRequest);
         return ResponseEntity.ok()
                 .body(MortgageResponse.builder().
@@ -41,19 +37,4 @@ public class MortgageController {
                         .monthlyCosts(monthlyCosts)
                         .build());
     }
-
-    /**
-     * Method to perform additional business validations on request
-     * @param request - Incoming api request
-     */
-    private void performValidation(MortgageRequest request) {
-        if (request.getLoanValue().compareTo(request.getHomeValue()) > 0) {
-            throw new MortgageValidationException(ErrorCode.HIGH_MORTGAGE_REQUEST);
-        }
-        if (request.getLoanValue()
-                .compareTo(request.getIncome().multiply(BigDecimal.valueOf(configuration.getIncomeThreshold()))) > 0) {
-            throw new MortgageValidationException(ErrorCode.INSUFFICIENT_INCOME);
-        }
-    }
-
 }

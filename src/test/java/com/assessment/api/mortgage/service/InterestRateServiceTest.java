@@ -2,6 +2,7 @@ package com.assessment.api.mortgage.service;
 
 import com.assessment.api.mortgage.dta.InterestRateDto;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -24,6 +25,7 @@ public class InterestRateServiceTest {
     private InterestRateService interestRateService;
 
     @Test
+    @DisplayName("InterestRateService : Verify whether saved interest rates are fetched")
     public void test_get_all_interest_rates() {
         List<InterestRateDto> interestRates = interestRateService.getAllInterestRate();
         assertEquals(4, interestRates.size());
@@ -31,6 +33,7 @@ public class InterestRateServiceTest {
 
     @ParameterizedTest
     @MethodSource("provideMaturityPeriod")
+    @DisplayName("InterestRateService : Verify fetch for a given maturity period")
     void test_fetch_single_interest_rates(int maturityPeriod, BigDecimal expectedInterestRate) {
         InterestRateDto interestRate = interestRateService.getRateForMaturity(maturityPeriod);
         assertEquals(0, expectedInterestRate.compareTo(interestRate.interestRate()));

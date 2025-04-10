@@ -1,7 +1,5 @@
 package stubs;
 
-import com.assessment.api.mortgage.model.MortgageRequest;
-
 import static stubs.FileUtils.getJsonFromFile;
 
 public class InterestRateResponseSamples {
