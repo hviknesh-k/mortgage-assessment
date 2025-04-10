@@ -22,7 +22,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"income\" : 4500,\n    \"maturityPeriod\": 10,\n    \"loanValue\": 100000,\n    \"homeValue\": 350000\n\n}",
+					"raw": "{\n    \"income\" : 100000,\n    \"maturityPeriod\": 10,\n    \"loanValue\": 200000,\n    \"homeValue\": 500000\n\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -40,7 +40,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"income\" : 1000,\n    \"maturityPeriod\": 10,\n    \"loanValue\": 60000,\n    \"homeValue\": 45000\n\n}",
+					"raw": "{\n    \"income\" : 1000,\n    \"maturityPeriod\": 10,\n    \"loanValue\": 60000,\n    \"homeValue\": 450000\n\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -58,7 +58,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"income\" : 1000,\n    \"maturityPeriod\": 11,\n    \"loanValue\": 60000,\n    \"homeValue\": 45000\n\n}",
+					"raw": "{\n    \"income\" : 100000,\n    \"maturityPeriod\": 11,\n    \"loanValue\": 60000,\n    \"homeValue\": 450000\n\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -112,7 +112,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"loanValue\": 60000,\n    \"homeValue\": 45000\n\n}",
+					"raw": "{\n    \"loanValue\": 60000,\n    \"homeValue\": 45000\n}",
 					"options": {
 						"raw": {
 							"language": "json"

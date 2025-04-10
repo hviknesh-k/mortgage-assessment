@@ -8,8 +8,7 @@ Assessment project to build endpoints in spring boot and perform testing.
 * Interest rate and mortgage calculation are treated as two different components
 * Mortgage rate calculation is done based on standard formula available online (https://www.jessym.com/articles/deriving-the-mortgage-payment-formula)
 * loanValue is considered for the mortgage calculation and not home value
-* Since not very sure of the condition for eligibility, assumption was done to compare X percentage of monthly income to monthly repayment costs.
-* maturity period is assumed to be in years and user will input one of the values from GET encpoint
+* maturity period and income is assumed to be in years and user will input one of maturity period values from GET encpoint
 * maturity period is assumed to be unique
 * No security framework is considered for this assessment
 
