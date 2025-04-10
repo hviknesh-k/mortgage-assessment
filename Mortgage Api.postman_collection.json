@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "e79bd57f-1463-451d-b3e7-3806aa0f42d8",
+		"name": "Mortgage Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "6285369"
+	},
+	"item": [
+		{
+			"name": "All interest rates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/interest-rates"
+			},
+			"response": []
+		},
+		{
+			"name": "Eligible Mortgage Scenario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"income\" : 4500,\n    \"maturityPeriod\": 10,\n    \"loanValue\": 100000,\n    \"homeValue\": 350000\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/mortgage-check"
+			},
+			"response": []
+		},
+		{
+			"name": "Ineligible Mortgage scenario : Low Income",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"income\" : 1000,\n    \"maturityPeriod\": 10,\n    \"loanValue\": 60000,\n    \"homeValue\": 45000\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/mortgage-check"
+			},
+			"response": []
+		},
+		{
+			"name": "Error scenario : Invalid maturity period",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"income\" : 1000,\n    \"maturityPeriod\": 11,\n    \"loanValue\": 60000,\n    \"homeValue\": 45000\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/mortgage-check"
+			},
+			"response": []
+		},
+		{
+			"name": "Error scenario : Less than minimum loan amount",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"income\" : 1000,\n    \"maturityPeriod\": 10,\n    \"loanValue\": 1000,\n    \"homeValue\": 45000\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/mortgage-check"
+			},
+			"response": []
+		},
+		{
+			"name": "Error scenario : Less than minimum income",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"income\" : 0,\n    \"maturityPeriod\": 10,\n    \"loanValue\": 60000,\n    \"homeValue\": 45000\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/mortgage-check"
+			},
+			"response": []
+		},
+		{
+			"name": "Error scenario : Missing mandatory fields",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"loanValue\": 60000,\n    \"homeValue\": 45000\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/mortgage-check"
+			},
+			"response": []
+		}
+	]
+}

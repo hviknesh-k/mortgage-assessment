@@ -1,0 +1,120 @@
+swagger: "2.0"
+info:
+  title: Mortgage API
+  description: |-
+    API to facilitate operations on mortgages like fetching mortgage rates, calculation eligibility etc
+  version: 1.0.0
+tags:
+  - name: mortgage
+    description: Services related to mortgage
+paths:
+  /api/interest-rates:
+    get:
+      tags:
+        - mortgage
+      summary: Get list of current interest rates
+      operationId: getInterestRates
+      responses:
+        "200":
+          description: On success execution of request
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/InterestRatesResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: "#/definitions/Error"
+        "500":
+          description: Server error / Operation error
+          schema:
+            $ref: "#/definitions/Error"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+
+  /api/mortgage-check:
+    post:
+      tags:
+        - mortgage
+      summary: Check eligibility and monthly costs for mortgage
+      operationId: getMortgageDetails
+      parameters:
+        - in: "body"
+          name: "mortgageRequest"
+          schema:
+            $ref: '#/definitions/MortgageRequest'
+
+      responses:
+        "200":
+          description: On success execution of request
+          schema:
+            $ref: '#/definitions/MortgageResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: "#/definitions/Error"
+        "500":
+          description: Server error / Operation error
+          schema:
+            $ref: "#/definitions/Error"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+
+
+definitions:
+  InterestRatesResponse:
+    type: object
+    properties:
+      maturityPeriod:
+        type: integer
+        example: 10
+      interestRate:
+        type: number
+        example: 7.8
+  MortgageRequest:
+    type: object
+    required:
+      - income
+      - maturityPeriod
+      - loanValue
+      - homeValue
+    properties:
+      income:
+        type: number
+        minimum: 500
+        example: 1000
+      maturityPeriod:
+        type: integer
+        minimum: 1
+        maximum: 30
+        example: 10
+      loanValue:
+        type: number
+        minimum: 5000
+        maximum: 5000000
+        example: 45000
+      homeValue:
+        type: number
+        example: 450000
+  MortgageResponse:
+    type: object
+    properties:
+      eligible:
+        type: boolean
+        example: true
+      monthlyCosts:
+        type: number
+        example: 1500
+
+  Error:
+    type: object
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+  

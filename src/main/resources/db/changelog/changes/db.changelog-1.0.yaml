@@ -1,0 +1,136 @@
+databaseChangeLog:
+  - changeSet:
+      id:  20250904-1
+      author:  mortgage-admin
+      comment: Creating interest rate table
+      changes:
+        - createTable:
+            tableName:  interest_rates
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: interest_rates_pk
+                  name:  maturity_period
+                  type:  INT
+              - column:
+                  name:  interest_rate
+                  type:  DECIMAL(4,2)
+              - column:
+                  name:  last_updated
+                  type:  TIMESTAMP
+  - changeSet:
+      id: 20250904-2
+      author: mortgage-admin
+      comment: Insert rows to table
+      changes:
+        - insert:
+            tableName: interest_rates
+            columns:
+              - column:
+                  name: maturity_period
+                  value: 5
+                  constraints:
+                    nullable: false
+              - column:
+                  name: interest_rate
+                  value: 8.34
+              - column:
+                  name: last_updated
+                  value: now()
+  - changeSet:
+      id: 20250904-3
+      author: mortgage-admin
+      comment: Insert rows to table
+      changes:
+        - insert:
+            tableName: interest_rates
+            columns:
+              - column:
+                  name: maturity_period
+                  value: 10
+                  constraints:
+                    nullable: false
+              - column:
+                  name: interest_rate
+                  value: 7.30
+              - column:
+                  name: last_updated
+                  value: now()
+  - changeSet:
+      id: 20250904-4
+      author: mortgage-admin
+      comment: Insert rows to table
+      changes:
+        - insert:
+            tableName: interest_rates
+            columns:
+              - column:
+                  name: maturity_period
+                  value: 15
+                  constraints:
+                    nullable: false
+              - column:
+                  name: interest_rate
+                  value: 6.12
+              - column:
+                  name: last_updated
+                  value: now()
+  - changeSet:
+      id: 20250904-5
+      author: mortgage-admin
+      comment: Insert rows to table
+      changes:
+        - insert:
+            tableName: interest_rates
+            columns:
+              - column:
+                  name: maturity_period
+                  value: 20
+                  constraints:
+                    nullable: false
+              - column:
+                  name: interest_rate
+                  value: 5.45
+              - column:
+                  name: last_updated
+                  value: now()
+  - changeSet:
+      id: 20250904-6
+      author: mortgage-admin
+      comment: Insert rows to table
+      changes:
+        - insert:
+            tableName: interest_rates
+            columns:
+              - column:
+                  name: maturity_period
+                  value: 25
+                  constraints:
+                    nullable: false
+              - column:
+                  name: interest_rate
+                  value: 4.50
+              - column:
+                  name: last_updated
+                  value: now()
+  - changeSet:
+      id: 20250904-7
+      author: mortgage-admin
+      comment: Insert rows to table
+      changes:
+        - insert:
+            tableName: interest_rates
+            columns:
+              - column:
+                  name: maturity_period
+                  value: 30
+                  constraints:
+                    nullable: false
+              - column:
+                  name: interest_rate
+                  value: 2.98
+              - column:
+                  name: last_updated
+                  value: now()
